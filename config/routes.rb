@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  get 'cars/create' => 'user#build'
-  get 'users/create_car' => 'cars#create'
-  get 'users/build' => 'users#build'
+  # when a user types localhost:3000/users/create_car into the browser, go to the CarsController and run the create method
+  get 'cars/create_car' => 'cars#index'
 
+    # when a user types localhost:3000/users/build into the browser, go to the UsersController and run the build method
+  get 'cars/build' => 'cars#build'
+
+  root 'cars#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
