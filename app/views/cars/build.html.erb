@@ -2,4 +2,8 @@
 
 <h2>Make: <%= @car.make %></h2>
 <h2>Model Year: <%= @car.year %></h2>
-<!-- <h2>Current Speed: <%= @speed%></h2> -->
+<h2>Current Speed: <%= @car.speed %>Km/h</h2>
+
+<form class="" action="/accelerate" method="get">
+  <input type="submit" value="Accelerate"/>
+</form>

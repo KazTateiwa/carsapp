@@ -7,11 +7,23 @@ class CarsController < ApplicationController
     # create a car based on make and model year of the car to be simulated.
     make = params[:make]
     year = params[:year]
-    # @speed = 0
     @car = Car.new(make, year)
+    # take Car object, store it as a YAML object so we can carry it around
+    session[:car] = @car.to_yaml
     # redirect_to 'build.html.erb'
   end
+
+  def accelerate
+    # unload existing Car object onto the page
+    @car = YAML.load(session[:car])
+    @car.accelerate
+    # allow us to update existing Car object on the page by reloading it into YAML
+    session[:car] = @car.to_yaml
+    render "build.html.erb"
+  end
 end
+
+
 # if !params.has_key?(:make) || params[:make].strip.empty?
 #   # raise "L"
 #   @make = "Make of car is missing"
